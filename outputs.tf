@@ -38,11 +38,6 @@ output "event_name" {
   value       = aws_cloudwatch_event_rule.daily_report_time.name
 }
 
-output "lambda_module" {
-  description = "all outputs from the lambda module"
-  value       = module.lambda_send_report
-}
-
 output "role_arn_recorder" {
   description = "AWS config Recorder policy"
   value       = aws_iam_role.recorder.arn
@@ -71,4 +66,36 @@ output "s3_bucket_arn" {
 output "recorder_delivery_channel" {
   description = "AWS config recorder delivery channel"
   value       = aws_config_delivery_channel.s3_delivery_chanel.id
+}
+
+### lambda module outputs
+
+output "lambda_policy_arns" {
+  description = "Policy arns"
+  value       = module.lambda.policy_arns
+}
+
+output "lambda_role_arn" {
+  description = "Lambda role arn"
+  value       = module.lambda.role_arn
+}
+
+output "lambda_log_group_arn" {
+  description = "Log group arn"
+  value       = module.lambda.log_group_arn
+}
+
+output "lambda_log_group_retention_period" {
+  description = "Log group arn"
+  value       = module.lambda.log_group_retention_period
+}
+
+output "lambda_arn" {
+  description = "lambda arn"
+  value       = module.lambda.lambda_arn
+}
+
+output "lambda_name" {
+  description = "lambda name"
+  value       = module.lambda.lambda_name
 }
