@@ -24,6 +24,6 @@ output "lambda_arn" {
 }
 
 output "lambda_name" {
-  description = "lambda arn"
+  description = "lambda name"
   value = aws_lambda_function.send_config_lambda.function_name
 }
