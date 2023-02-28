@@ -70,7 +70,12 @@ Tracks all available services and resources.
 | <a name="output_authorization_arns"></a> [authorization\_arns](#output\_authorization\_arns) | AWS config Authorization arns |
 | <a name="output_event_arn"></a> [event\_arn](#output\_event\_arn) | event bridge event arn |
 | <a name="output_event_name"></a> [event\_name](#output\_event\_name) | event bridge event arn |
-| <a name="output_lambda_module"></a> [lambda\_module](#output\_lambda\_module) | all outputs from the lambda module |
+| <a name="output_lambda_arn"></a> [lambda\_arn](#output\_lambda\_arn) | lambda arn |
+| <a name="output_lambda_log_group_arn"></a> [lambda\_log\_group\_arn](#output\_lambda\_log\_group\_arn) | Log group arn |
+| <a name="output_lambda_log_group_retention_period"></a> [lambda\_log\_group\_retention\_period](#output\_lambda\_log\_group\_retention\_period) | Log group arn |
+| <a name="output_lambda_name"></a> [lambda\_name](#output\_lambda\_name) | lambda name |
+| <a name="output_lambda_policy_arns"></a> [lambda\_policy\_arns](#output\_lambda\_policy\_arns) | Policy arns |
+| <a name="output_lambda_role_arn"></a> [lambda\_role\_arn](#output\_lambda\_role\_arn) | Lambda role arn |
 | <a name="output_recorder_delivery_channel"></a> [recorder\_delivery\_channel](#output\_recorder\_delivery\_channel) | AWS config recorder delivery channel |
 | <a name="output_recorder_name"></a> [recorder\_name](#output\_recorder\_name) | AWS config Recorder arn |
 | <a name="output_regions"></a> [regions](#output\_regions) | Regions which the AWS aggregator utilize |
