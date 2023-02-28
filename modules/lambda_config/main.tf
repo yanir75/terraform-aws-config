@@ -2,10 +2,10 @@ data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "send_email" {
   statement {
-    sid = "AllowSendEmail"
+    sid    = "AllowSendEmail"
     effect = "Allow"
-    actions=[
-        "ses:SendRawEmail"
+    actions = [
+      "ses:SendRawEmail"
     ]
 
     resources = [
@@ -28,10 +28,10 @@ data "aws_iam_policy_document" "send_email" {
 
 data "aws_iam_policy_document" "get_aggregator" {
   statement {
-    sid = "AllowSendEmail"
+    sid    = "AllowSendEmail"
     effect = "Allow"
-    actions=[
-        "config:SelectAggregateResourceConfig"
+    actions = [
+      "config:SelectAggregateResourceConfig"
     ]
 
     resources = [
@@ -125,7 +125,7 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_dir = var.path
+  source_dir  = var.path
   output_path = "lambda_zips/${var.path}.zip"
 }
 
@@ -136,7 +136,7 @@ resource "aws_lambda_function" "send_config_lambda" {
   function_name = var.lambda_name
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = var.handler
-  timeout = var.timeout
+  timeout       = var.timeout
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
@@ -148,8 +148,8 @@ resource "aws_lambda_function" "send_config_lambda" {
   environment {
     variables = {
       AGGREGATOR_NAME = var.aggregator_name
-      SENDER = var.sender
-      RECIPIENT = var.recipients
+      SENDER          = var.sender
+      RECIPIENT       = var.recipients
     }
   }
 }
