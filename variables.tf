@@ -9,57 +9,51 @@ variable "profile" {
 }
 
 variable "aggregator_name" {
-  description = "Aggregator name"
+  description = "Name of the AWS config aggregator name"
   type = string
 }
 
 variable "ses_email" {
-  description = "Email to use"
+  description = "Sender email in order to send the report"
   type = string
 }
 
 variable "event_name" {
-  description = "Event name" 
+  description = "Eventbridge event name" 
   type = string
 }
 
 variable "event_description" {
-  description = "Event description"
+  description = "Eventbridge event description"
   type = string
 }
 
 variable "schedule_expression" {
-  description = "When to generate the report"
+  description = "When to generate the report for example cron(0 0 * * ? *) each day at 12"
   type = string
 }
 
 variable "recipient" {
-  description = "Email recipients"
+  description = "Which emails to send the report"
   type = string
 }
 
 variable "lambda_name" {
-  description = "Lambda name"
+  description = "Lambda function name"
   type = string
 }
 
 variable "path" {
-  description = "Path to the lambda"
+  description = "Path to the source folder of the lambda code"
   type = string
 }
 
 variable "recorder_name" {
-  description = "Recorder name"
+  description = "AWS config Recorder name"
   type = string
 }
 
 variable "s3_bucket_name" {
-  description = "Recorder s3 destination"
+  description = "AWS Recorder s3 destination. In order to put the modifications."
   type = string
-}
-
-variable "main_region" {
-  description = "Is it the main region to deploy"
-  type = bool
-  default = true
 }
