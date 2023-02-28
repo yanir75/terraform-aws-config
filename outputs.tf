@@ -72,30 +72,30 @@ output "recorder_delivery_channel" {
 
 output "lambda_policy_arns" {
   description = "Policy arns"
-  value       = module.lambda.policy_arns
+  value       = module.lambda_send_report.policy_arns
 }
 
 output "lambda_role_arn" {
   description = "Lambda role arn"
-  value       = module.lambda.role_arn
+  value       = module.lambda_send_report.role_arn
 }
 
 output "lambda_log_group_arn" {
   description = "Log group arn"
-  value       = module.lambda.log_group_arn
+  value       = module.lambda_send_report.log_group_arn
 }
 
 output "lambda_log_group_retention_period" {
   description = "Log group arn"
-  value       = module.lambda.log_group_retention_period
+  value       = module.lambda_send_report.log_group_retention_period
 }
 
 output "lambda_arn" {
   description = "lambda arn"
-  value       = module.lambda.lambda_arn
+  value       = module.lambda_send_report.lambda_arn
 }
 
 output "lambda_name" {
   description = "lambda name"
-  value       = module.lambda.lambda_name
+  value       = module.lambda_send_report.lambda_name
 }
