@@ -3,3 +3,4 @@
 *.tfvars*
 *.tfstate*
 *lambda_zips*
+.DS_Store
