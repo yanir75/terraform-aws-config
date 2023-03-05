@@ -3,7 +3,6 @@ Sends daily AWS resource modification summary of your AWS account to your email.
 EventBridge triggers a lambda which sends a report of your daily AWS modification to you inbox, in order to track and remediate daily changes.  
 Tracks all available services and resources.
 
-
 ## Requirements
 
 | Name | Version |
@@ -22,6 +21,7 @@ Tracks all available services and resources.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_lambda_send_report"></a> [lambda\_send\_report](#module\_lambda\_send\_report) | ./modules/lambda_config | n/a |
+| <a name="module_recorder"></a> [recorder](#module\_recorder) | ./modules/config_recorder | n/a |
 
 ## Resources
 
@@ -31,15 +31,7 @@ Tracks all available services and resources.
 | [aws_cloudwatch_event_target.daily_report](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
 | [aws_config_aggregate_authorization.account](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_aggregate_authorization) | resource |
 | [aws_config_configuration_aggregator.account](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_configuration_aggregator) | resource |
-| [aws_config_configuration_recorder.recorder](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_configuration_recorder) | resource |
-| [aws_config_configuration_recorder_status.enable_recorder](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_configuration_recorder_status) | resource |
-| [aws_config_delivery_channel.s3_delivery_chanel](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/config_delivery_channel) | resource |
-| [aws_iam_role.recorder](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.recorder](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.managed_policy_recorder](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lambda_permission.daily_report_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_permission) | resource |
-| [aws_s3_bucket.recorder_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.block_public](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_ses_email_identity.daily_report_email](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_email_identity) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_regions.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/regions) | data source |
@@ -51,6 +43,7 @@ Tracks all available services and resources.
 | <a name="input_aggregator_name"></a> [aggregator\_name](#input\_aggregator\_name) | Name of the AWS config aggregator name | `string` | n/a | yes |
 | <a name="input_event_description"></a> [event\_description](#input\_event\_description) | Eventbridge event description | `string` | n/a | yes |
 | <a name="input_event_name"></a> [event\_name](#input\_event\_name) | Eventbridge event name | `string` | n/a | yes |
+| <a name="input_is_main_region"></a> [is\_main\_region](#input\_is\_main\_region) | Only in main region we deploy the aggregator and lambda | `bool` | `true` | no |
 | <a name="input_lambda_name"></a> [lambda\_name](#input\_lambda\_name) | Lambda function name | `string` | n/a | yes |
 | <a name="input_path"></a> [path](#input\_path) | Path to the source folder of the lambda code | `string` | n/a | yes |
 | <a name="input_profile"></a> [profile](#input\_profile) | AWS profile to use | `string` | n/a | yes |
