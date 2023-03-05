@@ -1,7 +1,7 @@
 variable "is_main_region" {
-  type = bool
-  default = true
-  description = "Only in main region we deploy the aggregator and lambda" 
+  type        = bool
+  default     = true
+  description = "Only in main region we deploy the aggregator and lambda"
 }
 
 variable "region" {

@@ -9,7 +9,7 @@ locals {
 }
 resource "aws_config_configuration_aggregator" "account" {
   count = var.is_main_region ? 1 : 0
-  name = var.aggregator_name
+  name  = var.aggregator_name
 
   account_aggregation_source {
     account_ids = [local.account_id]
@@ -30,14 +30,14 @@ resource "aws_ses_email_identity" "daily_report_email" {
 
 
 resource "aws_cloudwatch_event_rule" "daily_report_time" {
-  count = var.is_main_region ? 1 : 0
+  count               = var.is_main_region ? 1 : 0
   name                = var.event_name
   description         = var.event_description
   schedule_expression = var.schedule_expression
 }
 
 module "lambda_send_report" {
-  count = var.is_main_region ? 1 : 0
+  count           = var.is_main_region ? 1 : 0
   source          = "./modules/lambda_config"
   sender          = var.ses_email
   aggregator_name = aws_config_configuration_aggregator.account[0].name
@@ -51,12 +51,12 @@ module "lambda_send_report" {
 
 resource "aws_cloudwatch_event_target" "daily_report" {
   count = var.is_main_region ? 1 : 0
-  arn  = module.lambda_send_report[0].lambda_arn
-  rule = aws_cloudwatch_event_rule.daily_report_time[0].name
+  arn   = module.lambda_send_report[0].lambda_arn
+  rule  = aws_cloudwatch_event_rule.daily_report_time[0].name
 }
 
 resource "aws_lambda_permission" "daily_report_permissions" {
-  count = var.is_main_region ? 1 : 0
+  count         = var.is_main_region ? 1 : 0
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
   function_name = module.lambda_send_report[0].lambda_name
@@ -65,7 +65,7 @@ resource "aws_lambda_permission" "daily_report_permissions" {
 }
 
 module "recorder" {
-  source = "./modules/config_recorder"
-  recorder_name = var.recorder_name
+  source         = "./modules/config_recorder"
+  recorder_name  = var.recorder_name
   s3_bucket_name = var.s3_bucket_name
 }
