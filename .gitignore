@@ -4,3 +4,5 @@
 *.tfstate*
 *lambda_zips*
 .DS_Store
+*us-east-1*
+*eu-central-1*

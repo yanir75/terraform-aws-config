@@ -10,3 +10,4 @@ recipient           = "example123@example.com"
 path                = "./src"
 recorder_name       = "DailyReportRecorder"
 s3_bucket_name      = "example-recorder"
+is_main_region      = true
